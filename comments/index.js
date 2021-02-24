@@ -41,10 +41,11 @@ app.post('/events', async (req, res) => {
   console.log('Event Received:', req.body.type);
 
   const { type, data } = req.body;
-  
+
   if (type === 'CommentModerated') {
-    const { postId, id, status } = data;
+    const { postId, id, status, content } = data;
     const comments = commentsByPostId[postId];
+
     const comment = comments.find(comment => {
       return comment.id === id;
     });
@@ -58,7 +59,7 @@ app.post('/events', async (req, res) => {
         postId,
         content
       }
-    })
+    });
   }
 
   res.send({});

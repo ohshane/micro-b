@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { response } = require('express');
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,23 +17,22 @@ app.post('/events', (req, res) => {
 
   if (type === 'PostCreated') {
     const { id, title } = data;
-    posts[id] = {
-      id,
-      title,
-      comments: [],
-    };
+
+    posts[id] = { id, title, comments: [] };
   }
-  
+
   if (type === 'CommentCreated') {
     const { id, content, postId, status } = data;
+
     const post = posts[postId];
     post.comments.push({ id, content, status });
   }
 
   if (type === 'CommentUpdated') {
     const { id, content, postId, status } = data;
+
     const post = posts[postId];
-    post.comments.find(comment => {
+    const comment = post.comments.find(comment => {
       return comment.id === id;
     });
 
