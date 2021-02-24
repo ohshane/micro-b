@@ -3,12 +3,13 @@ import axios from 'axios';
 import CommentCreate from './CommentCreate';
 import CommentList from './CommentList';
 
-function PostList() {
+export default () => {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
-    const res = await axios.get('http://localhost:4000/posts')
-    setPosts(res.data)
+    const res = await axios.get('http://localhost:4000/posts');
+
+    setPosts(res.data);
   };
 
   useEffect(() => {
@@ -36,6 +37,4 @@ function PostList() {
       {renderedPosts}
     </div>
   );
-}
-
-export default PostList;
+};

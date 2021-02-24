@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const bodyParser = require('express-json');
 const { randomBytes } = require('crypto');
 const cors = require('cors');
 const axios = require('axios');
@@ -32,9 +31,15 @@ app.post('/posts', async (req, res) => {
     }
   });
 
-  res.status(201).send(posts[id])
+  res.status(201).send(posts[id]);
+});
+
+app.post('/events', (req, res) => {
+  console.log('Received Event', req.body.type);
+
+  res.send({});
 });
 
 app.listen(4000, () => {
-  console.log('Listening on port 4000')
+  console.log('Listening on 4000');
 });
