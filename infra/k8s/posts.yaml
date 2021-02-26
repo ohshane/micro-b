@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: posts
 sepc:
-  containers:
-    - name: posts
-      image: stephengrider/posts:0.0.1
+  template:
+    containers:
+      - name: posts
+        image: stephengrider/posts:0.0.1
