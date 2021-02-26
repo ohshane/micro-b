@@ -4,6 +4,7 @@ metadata:
   name: posts
 sepc:
   template:
-    containers:
+    spec:
+      containers:
       - name: posts
         image: stephengrider/posts:0.0.1
